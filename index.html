@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#11131a" />
+  <title>INKTYPE — スプラ・プレイスタイル診断</title>
+  <meta name="description" content="32問でスプラのプレイ価値観を8軸で可視化する、非公式ファンメイド診断。友だちとの比較にも対応。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="INKTYPE — スプラ・プレイスタイル診断" />
+  <meta property="og:description" content="32問で、前線圧力・侵入/撹乱・連携・生存管理などを8軸診断。あなたはどんなイカ？" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="INKTYPE — スプラ・プレイスタイル診断" />
+  <meta name="twitter:description" content="32問でスプラのプレイ価値観を8軸診断。友だちとも比較できます。" />
+  <style>
+:root{
+  --bg:#0b0d13;--panel:#141722;--panel2:#191d29;--text:#f7f7fb;--muted:#a8adbc;
+  --lime:#c9ff24;--pink:#ff4eb8;--cyan:#46d9ff;--orange:#ff9f1c;--purple:#9f6cff;
+  --border:rgba(255,255,255,.1);--shadow:0 24px 70px rgba(0,0,0,.38);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 20% 0%,#171b2a 0,#0b0d13 40%),var(--bg);color:var(--text);font-family:Inter,"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;min-height:100vh;overflow-x:hidden}.noise{position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");z-index:99}.app-shell{width:min(1060px,calc(100% - 32px));margin:auto;padding-bottom:72px}.topbar{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}.brand{border:0;background:none;color:#fff;font-weight:900;letter-spacing:.08em;font-size:18px;display:flex;gap:10px;align-items:center;cursor:pointer}.brand-mark{width:31px;height:31px;border-radius:11px 13px 9px 14px;background:var(--lime);color:#0b0d13;display:grid;place-items:center;transform:rotate(-7deg);font-style:italic}.prototype-badge{font-size:10px;letter-spacing:.14em;border:1px solid var(--border);padding:7px 10px;border-radius:999px;color:var(--muted)}.screen{display:none;animation:fade .35s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.glass{background:linear-gradient(180deg,rgba(29,33,47,.88),rgba(18,21,31,.92));border:1px solid var(--border);border-radius:26px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}.hero-screen{position:relative;min-height:760px;padding:74px 0 0}.hero-copy{max-width:630px;position:relative;z-index:2}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.2em;color:var(--lime);margin:0 0 16px}.hero-copy h1{font-size:clamp(52px,8vw,92px);line-height:.92;letter-spacing:-.07em;margin:0;font-weight:950}.hero-copy h1 span{background:linear-gradient(90deg,var(--lime),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:17px;line-height:1.8;color:#c7cad4;max-width:560px;margin:28px 0 20px}.hero-tags{display:flex;gap:8px;flex-wrap:wrap}.hero-tags span,.type-chips span{font-size:12px;font-weight:800;border:1px solid var(--border);border-radius:999px;padding:7px 11px;background:rgba(255,255,255,.035)}.start-card{position:absolute;right:0;top:120px;width:360px;padding:28px;z-index:3}.start-card label,.compare-card label{display:block;font-size:12px;font-weight:800;color:var(--muted);margin-bottom:9px}.start-card input,.code-row input{width:100%;border:1px solid var(--border);background:#0d1018;color:#fff;border-radius:14px;padding:15px 16px;outline:none;font-size:15px}.start-card input:focus,.code-row input:focus{border-color:rgba(201,255,36,.55);box-shadow:0 0 0 3px rgba(201,255,36,.09)}button{font:inherit}.primary-btn,.secondary-btn,.text-btn{cursor:pointer}.primary-btn{border:0;background:var(--lime);color:#0b0d13;font-weight:950;border-radius:15px;padding:15px 19px;display:flex;justify-content:center;align-items:center;gap:10px;margin-top:14px;transition:.2s}.primary-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,255,36,.17)}.primary-btn span{font-size:20px}.secondary-btn{border:1px solid var(--border);background:#232836;color:#fff;border-radius:13px;padding:13px 17px;font-weight:800;white-space:nowrap}.text-btn{border:0;background:none;color:var(--muted);padding:13px 0;text-decoration:underline;text-underline-offset:4px}.tiny{font-size:10px;line-height:1.6;color:#747b8d;margin:13px 0 0}.howto{position:absolute;left:0;bottom:18px;width:600px;padding:20px 22px;display:flex;gap:14px}.howto div{display:flex;align-items:center;gap:9px;flex:1}.howto b{font-size:11px;color:var(--lime);font-family:monospace}.howto span{font-size:13px;font-weight:700}.hero-splat{position:absolute;filter:blur(1px);opacity:.5;z-index:0}.splat-a{width:320px;height:320px;border-radius:48% 52% 63% 37% / 44% 34% 66% 56%;background:var(--pink);right:-130px;top:10px;transform:rotate(24deg)}.splat-b{width:230px;height:230px;border-radius:38% 62% 31% 69% / 55% 44% 56% 45%;background:var(--purple);left:-130px;bottom:70px}.quiz-screen{padding-top:22px}.quiz-head{display:flex;gap:18px;align-items:center;margin:24px auto 36px;width:min(820px,100%)}.back-btn{width:42px;height:42px;border-radius:13px;border:1px solid var(--border);background:#151925;color:#fff;cursor:pointer}.progress-wrap{flex:1}.progress-meta{display:flex;justify-content:space-between;font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}.progress-meta span:last-child{color:var(--lime)}.progress{height:7px;background:#1d2130;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--lime),var(--cyan));border-radius:inherit;width:0;transition:.3s}.question-card{width:min(820px,100%);margin:auto;padding:38px 40px 44px;text-align:center;min-height:550px;display:flex;flex-direction:column;justify-content:center}.q-number{font-family:monospace;color:var(--pink);font-weight:900;font-size:13px}.question-card h2{font-size:clamp(26px,4vw,42px);letter-spacing:-.035em;line-height:1.35;margin:18px auto 9px;max-width:650px}.question-hint{color:var(--muted);font-size:13px;margin:0 auto 34px}.choices{display:grid;grid-template-columns:1fr 48px 1fr;gap:10px;align-items:center}.choice-btn{min-height:150px;padding:22px;border-radius:22px;border:1px solid var(--border);color:#fff;background:#181c28;font-weight:900;font-size:17px;line-height:1.5;cursor:pointer;transition:.2s;position:relative;overflow:hidden}.choice-btn:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.24)}.choice-a:before,.choice-b:before{content:"";position:absolute;width:100px;height:100px;border-radius:50%;filter:blur(35px);opacity:.18;top:-40px;right:-35px}.choice-a:before{background:var(--pink)}.choice-b:before{background:var(--cyan)}.vs{font-size:11px;font-weight:950;color:#697083}.prefs-screen,.result-screen{padding-top:42px}.section-heading{max-width:680px;margin:0 auto 32px;text-align:center}.section-heading h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.055em;margin:0 0 10px}.section-heading>p:last-child{color:var(--muted)}.pref-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.pref-group{padding:24px}.pref-group h3{margin:0 0 5px;font-size:17px}.pref-group p{margin:0 0 18px;color:var(--muted);font-size:12px}.pill-grid{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid var(--border);background:#121620;color:#cbd0dc;border-radius:999px;padding:10px 13px;cursor:pointer;font-weight:800;font-size:12px}.pill.selected{background:rgba(201,255,36,.12);color:#efffc5;border-color:rgba(201,255,36,.6)}
+.pref-group.expanded{grid-column:1/-1}.pref-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.pref-head h3{margin:0 0 5px}.pref-head p{margin:0}.pref-count{font:800 11px/1.4 monospace;color:var(--muted);white-space:nowrap}.pref-tools{display:flex;align-items:center;gap:10px;margin:0 0 14px}.pref-search{width:100%;border:1px solid var(--border);background:#0d1018;color:#fff;border-radius:12px;padding:11px 13px;outline:none}.pref-search:focus{border-color:rgba(201,255,36,.55)}.pref-legend{font-size:11px;color:var(--muted);white-space:nowrap}.choice-pill{display:inline-flex;align-items:center;border:1px solid var(--border);background:#121620;border-radius:999px;overflow:hidden;transition:.2s}.choice-pill.selected{border-color:rgba(201,255,36,.62);background:rgba(201,255,36,.09)}.choice-main{border:0;background:transparent;color:#cbd0dc;padding:10px 10px 10px 13px;cursor:pointer;font-weight:800;font-size:12px}.choice-pill.selected .choice-main{color:#f0ffc7}.star-btn{border:0;border-left:1px solid var(--border);background:transparent;color:#62697a;cursor:pointer;padding:10px 11px;font-size:15px;line-height:1}.choice-pill.selected .star-btn{color:#9fa7b8}.choice-pill.favorite{border-color:rgba(255,209,64,.7);box-shadow:0 0 0 1px rgba(255,209,64,.08) inset}.choice-pill.favorite .star-btn{color:#ffd140}.choice-pill.favorite .choice-main{color:#fff7ce}.pref-note{margin-top:13px!important;color:#7d8495!important}.pref-values{display:flex;flex-wrap:wrap;gap:6px}.pref-tag{font-size:11px;padding:6px 8px;border-radius:999px;background:#1a1e2a;border:1px solid var(--border);color:#cfd3dd}.pref-tag.favorite{border-color:rgba(255,209,64,.55);color:#fff0a6}.wide{margin:28px auto 0;width:min(500px,100%)}.result-hero{text-align:center;padding:38px 16px 30px}.result-name{font-size:14px;color:var(--muted);margin:0 0 10px}.result-hero h2{font-size:clamp(40px,7vw,76px);letter-spacing:-.06em;line-height:1;margin:0;background:linear-gradient(90deg,#fff,var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}.type-desc{max-width:650px;color:#c7cad4;line-height:1.8;margin:22px auto}.type-chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.result-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.radar-card,.stats-card,.insight-card,.preference-card,.compare-card{padding:24px}.card-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.card-title span{font-size:10px;letter-spacing:.16em;color:var(--lime);font-weight:900}.card-title b{font-size:12px;color:#aeb4c1}#radar{width:100%;height:auto;display:block}.stats-list{display:flex;flex-direction:column;gap:13px}.stat-row{display:grid;grid-template-columns:80px 1fr 36px;gap:10px;align-items:center}.stat-label{font-size:12px;font-weight:800;color:#cfd3dd}.stat-bar{height:8px;background:#202534;border-radius:999px;overflow:hidden}.stat-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--lime));border-radius:inherit}.stat-score{text-align:right;font-family:monospace;font-weight:900}.insight-card,.preference-card,.compare-card{margin-top:16px}.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.insight{background:#10131c;border:1px solid var(--border);border-radius:17px;padding:18px}.insight b{display:block;font-size:13px;margin-bottom:7px}.insight p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}.pref-result{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.pref-result>div{background:#10131c;border-radius:16px;padding:16px;border:1px solid var(--border)}.pref-result span{display:block;font-size:10px;color:var(--muted);margin-bottom:7px}.pref-result b{font-size:13px}.compare-card>p{color:var(--muted);font-size:13px}.code-row{display:flex;gap:8px}.divider{display:flex;align-items:center;gap:12px;color:#666d7d;font-size:10px;font-weight:900;margin:18px 0}.divider:before,.divider:after{content:"";height:1px;background:var(--border);flex:1}.compare-card label{margin-top:0}.compare-result{margin-top:18px;background:#0f121b;border:1px solid var(--border);border-radius:18px;padding:20px}.compare-score{display:flex;align-items:end;gap:8px}.compare-score strong{font-size:52px;line-height:1;color:var(--lime);letter-spacing:-.05em}.compare-score span{color:var(--muted);font-size:12px;padding-bottom:8px}.compare-bars{margin-top:16px;display:grid;gap:8px}.compare-mini{display:grid;grid-template-columns:70px 1fr 34px;gap:8px;font-size:11px;align-items:center}.compare-mini i{height:6px;background:#242938;border-radius:999px;overflow:hidden}.compare-mini i:after{content:"";display:block;height:100%;width:var(--w);background:var(--cyan)}.hidden{display:none}.result-actions{display:flex;flex-direction:column;align-items:center;margin:24px 0}.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);background:#fff;color:#111;padding:11px 17px;border-radius:999px;font-weight:800;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:200}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){.hero-screen{padding-top:36px;min-height:auto}.start-card{position:relative;top:auto;right:auto;width:100%;margin-top:38px}.howto{position:relative;left:auto;bottom:auto;width:100%;margin-top:14px}.hero-splat{opacity:.25}.result-grid{grid-template-columns:1fr}.insights{grid-template-columns:1fr}.pref-result{grid-template-columns:repeat(2,1fr)}}
+.public-note{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid var(--border);font-size:11px;line-height:1.7;color:#8f96a7}.share-card{margin-top:16px;padding:24px}.share-preview{background:#0f121b;border:1px solid var(--border);border-radius:18px;padding:18px;white-space:pre-wrap;color:#d9dde6;font-size:13px;line-height:1.75}.share-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.share-actions .primary-btn,.share-actions .secondary-btn{margin-top:0}.x-btn{background:#fff;color:#0b0d13}.footer{margin:42px auto 0;padding:22px 0 8px;border-top:1px solid var(--border);color:#747b8d;font-size:11px;line-height:1.8;text-align:center}.footer b{color:#aeb4c1}.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}.footer button{border:0;background:none;color:#aeb4c1;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:11px}.beta-callout{display:flex;gap:10px;align-items:flex-start;margin-top:18px;color:#9fa6b6;font-size:12px;line-height:1.65}.beta-dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px rgba(201,255,36,.6);flex:0 0 auto;margin-top:6px}.time-chip{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:7px 10px;border-radius:999px;background:rgba(70,217,255,.08);border:1px solid rgba(70,217,255,.24);color:#c7f5ff;font-size:11px;font-weight:850}.feedback-modal{position:fixed;inset:0;background:rgba(4,5,9,.78);display:none;place-items:center;padding:20px;z-index:400}.feedback-modal.open{display:grid}.modal-card{width:min(560px,100%);padding:24px}.modal-card h3{margin:0 0 10px}.modal-card p{color:var(--muted);font-size:13px;line-height:1.8}.modal-card textarea{width:100%;min-height:150px;resize:vertical;border:1px solid var(--border);background:#0d1018;color:#fff;border-radius:14px;padding:14px;outline:none}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}.modal-actions .primary-btn,.modal-actions .secondary-btn{margin-top:0}.share-status{font-size:11px;color:var(--muted);margin-top:9px}.kbd{font-family:monospace;border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;padding:1px 5px;color:#c7cad4}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:620px){.share-actions{display:grid;grid-template-columns:1fr}.share-actions button{width:100%}.hero-screen{padding-top:34px}.start-card{padding:22px}.time-chip{margin-bottom:8px}.app-shell{width:min(100% - 22px,1060px)}.topbar{height:66px}.hero-copy h1{font-size:57px}.lead{font-size:15px}.howto{flex-direction:column}.question-card{padding:28px 18px;min-height:600px}.choices{grid-template-columns:1fr}.vs{height:24px;display:grid;place-items:center}.choice-btn{min-height:115px}.pref-groups{grid-template-columns:1fr}.radar-card,.stats-card,.insight-card,.preference-card,.compare-card{padding:18px}.pref-result{grid-template-columns:1fr 1fr}.code-row{flex-direction:column}.secondary-btn{width:100%}}
+
+</style>
+</head>
+<body>
+  <div class="noise"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <button id="brandBtn" class="brand" aria-label="トップへ">
+        <span class="brand-mark">I</span><span>INKTYPE</span>
+      </button>
+      <span class="prototype-badge">PUBLIC BETA v4</span>
+    </header>
+
+    <section id="home" class="screen active hero-screen">
+      <div class="hero-splat splat-a"></div>
+      <div class="hero-splat splat-b"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">PLAY STYLE PROFILER</p>
+        <h1>あなたは、<br><span>どんなイカ？</span></h1>
+        <p class="lead">32問で、あなたの「前線圧力・侵入/撹乱・連携・生存管理」などを8軸で可視化します。</p>
+        <span class="time-chip">⏱ 所要時間 約3〜5分</span>
+        <div class="hero-tags">
+          <span>前へ出る？</span><span>潜り込む？</span><span>合わせる？</span><span>生き残る？</span>
+        </div>
+      </div>
+      <div class="start-card glass">
+        <label for="nickname">ニックネーム</label>
+        <input id="nickname" maxlength="18" placeholder="例：Hiroshi" autocomplete="off" />
+        <button id="startBtn" class="primary-btn">診断をはじめる <span>→</span></button>
+        <button id="compareFromHomeBtn" class="text-btn">友だちの結果コードと比較する</button>
+        <div class="beta-callout"><span class="beta-dot"></span><span>Public Beta。回答はサーバー送信せず、このブラウザ内だけで計算します。</span></div>
+        <p class="tiny">非公式ファンメイドサイトです。任天堂株式会社その他の権利者とは関係ありません。公式画像・ロゴは使用していません。</p>
+      </div>
+      <div class="howto glass compact">
+        <div><b>01</b><span>2択に答える</span></div>
+        <div><b>02</b><span>好みを選ぶ</span></div>
+        <div><b>03</b><span>8軸で診断</span></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="screen quiz-screen">
+      <div class="quiz-head">
+        <button class="back-btn" id="quizBack">←</button>
+        <div class="progress-wrap">
+          <div class="progress-meta"><span id="progressLabel">1 / 32</span><span id="categoryLabel">FRONTLINE</span></div>
+          <div class="progress"><i id="progressBar"></i></div>
+        </div>
+      </div>
+      <div class="question-card glass">
+        <span class="q-number" id="questionNumber">Q01</span>
+        <h2 id="questionText"></h2>
+        <p id="questionHint" class="question-hint"></p>
+        <div class="choices">
+          <button id="choiceA" class="choice-btn choice-a"></button>
+          <div class="vs">VS</div>
+          <button id="choiceB" class="choice-btn choice-b"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="prefs" class="screen prefs-screen">
+      <div class="section-heading">
+        <p class="eyebrow">LAST STEP</p>
+        <h2>好きなものを教えてください。</h2>
+        <p>これはステータス判定とは別のプロフィール情報です。すべて複数選択でき、★を各カテゴリ3つまで付けられます。</p>
+      </div>
+      <div id="prefGroups" class="pref-groups"></div>
+      <button id="showResultBtn" class="primary-btn wide">診断結果を見る <span>→</span></button>
+    </section>
+
+    <section id="result" class="screen result-screen">
+      <div class="result-hero">
+        <p class="eyebrow">YOUR INKTYPE</p>
+        <p id="resultName" class="result-name"></p>
+        <h2 id="typeName">連携型ラインブレイカー</h2>
+        <p id="typeDesc" class="type-desc"></p>
+        <div class="type-chips" id="typeChips"></div>
+      </div>
+
+      <div class="result-grid">
+        <article class="glass radar-card">
+          <div class="card-title"><span>PLAY STYLE</span><b>8 AXES</b></div>
+          <canvas id="radar" width="640" height="520"></canvas>
+        </article>
+        <article class="glass stats-card">
+          <div class="card-title"><span>STATUS</span><b>SCORE / 100</b></div>
+          <div id="statsList" class="stats-list"></div>
+        </article>
+      </div>
+
+      <article class="glass insight-card">
+        <div class="card-title"><span>PROFILE</span><b>あなたの傾向</b></div>
+        <div id="insights" class="insights"></div>
+      </article>
+
+      <article class="glass preference-card">
+        <div class="card-title"><span>FAVORITES</span><b>好きなもの</b></div>
+        <div id="prefResult" class="pref-result"></div>
+      </article>
+
+      <article class="glass share-card">
+        <div class="card-title"><span>SHARE</span><b>X / 共有</b></div>
+        <p style="color:var(--muted);font-size:13px">診断結果をワンタップで共有できます。結果コード自体は投稿本文に含めません。</p>
+        <div id="sharePreview" class="share-preview"></div>
+        <div class="share-actions">
+          <button id="shareXBtn" class="primary-btn x-btn">Xで結果をシェア</button>
+          <button id="nativeShareBtn" class="secondary-btn">共有…</button>
+          <button id="copyShareTextBtn" class="secondary-btn">文章をコピー</button>
+        </div>
+        <p id="shareStatus" class="share-status"></p>
+      </article>
+
+      <article class="glass compare-card">
+        <div class="card-title"><span>COMPARE</span><b>友だちと比べる</b></div>
+        <p>このコードを友だちに送ると、価値観の近さを比較できます。</p>
+        <div class="code-row">
+          <input id="shareCode" readonly />
+          <button id="copyCodeBtn" class="secondary-btn">コピー</button>
+        </div>
+        <div class="divider"><span>OR</span></div>
+        <label for="friendCode">友だちの結果コード</label>
+        <div class="code-row">
+          <input id="friendCode" placeholder="コードを貼り付け" />
+          <button id="compareBtn" class="secondary-btn">比較</button>
+        </div>
+        <div id="compareResult" class="compare-result hidden"></div>
+      </article>
+
+      <div class="result-actions">
+        <button id="retryBtn" class="primary-btn">もう一度診断する</button>
+        <button id="scrollCompareBtn" class="text-btn">比較コードを見る</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <b>INKTYPE Public Beta v4</b><br>
+      スプラのプレイ価値観を可視化する非公式ファンメイド診断です。任天堂株式会社その他の権利者とは関係ありません。<br>
+      診断結果は娯楽目的の参考値であり、プレイヤーの実力・適性を断定するものではありません。
+      <div class="footer-links"><button id="privacyBtn">プライバシー</button><button id="feedbackBtn">フィードバック</button><button id="aboutBtn">この診断について</button></div>
+    </footer>
+  </main>
+
+  <div id="feedbackModal" class="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+    <div class="modal-card glass">
+      <h3 id="feedbackTitle">フィードバック</h3>
+      <p>気になった質問、診断タイプの違和感、追加してほしい機能などを書いてください。内容をコピーして、Xの投稿・リプ・DMなど好きな方法で作者に送れる形です。</p>
+      <textarea id="feedbackText" placeholder="例：パブロ使いですが、侵入・撹乱が低く出ました。Q12の選択肢が少し答えづらかったです。"></textarea>
+      <div class="modal-actions"><button id="closeFeedbackBtn" class="secondary-btn">閉じる</button><button id="copyFeedbackBtn" class="primary-btn">内容をコピー</button></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">コピーしました</div>
+  <script>
+const AXES = [
+  ['frontline','前線圧力'],['invasion','侵入・撹乱'],['teamwork','連携'],['objective','ルール'],
+  ['paint','塗り'],['survival','生存管理'],['duel','対面志向'],['adaptability','適応力']
+];
+
+// v2: 「攻撃性」を前線圧力と侵入・撹乱に分解。
+// 生存管理は消極性ではなく、デスを抑えながら仕事を継続する能力/価値観として扱う。
+const Q = [
+ {cat:'FRONTLINE',q:'味方が1枚落として人数有利。まず取りたいのは？',h:'前線をどこまで押し上げるか',a:'一気に前へ出て相手の行動範囲を狭める',b:'今の有利な盤面を固めて次の動きを待つ',wa:{frontline:2,objective:1},wb:{frontline:-2,survival:1}},
+ {cat:'FRONTLINE',q:'抑えに入った直後、自分がしたいのは？',h:'圧のかけ方',a:'相手の復帰ルート近くまで入り、自由を奪う',b:'中央付近の強い位置から復帰を迎え撃つ',wa:{frontline:2,invasion:1},wb:{frontline:-1,survival:1,duel:1}},
+ {cat:'FRONTLINE',q:'味方が前で戦い始めた。自分は？',h:'ラインを上げる意識',a:'すぐ距離を詰めて前線そのものを押し上げる',b:'射程や役割に合う距離を保って支える',wa:{frontline:2,teamwork:1},wb:{frontline:-2,teamwork:1}},
+ {cat:'FRONTLINE',q:'理想の試合展開に近いのは？',h:'自分がいたい場所',a:'自分たちのラインを高く保ち、相手を押し込む',b:'無理に高いラインを取らず、崩れない形を作る',wa:{frontline:2},wb:{frontline:-2,survival:1}},
+
+ {cat:'INVASION',q:'正面が膠着している。空いている横ルートを見つけたら？',h:'別角度への入り方',a:'回り込んで相手の視線を分散させる',b:'正面の味方と同じ場所から圧を重ねる',wa:{invasion:2,adaptability:1},wb:{invasion:-2,teamwork:1}},
+ {cat:'INVASION',q:'敵後衛の近くまで安全に入り込めそう。どうする？',h:'敵陣への侵入価値',a:'キルできなくても注意を引けるなら入りたい',b:'味方と離れすぎるので基本は入らない',wa:{invasion:2,survival:1},wb:{invasion:-2,teamwork:1}},
+ {cat:'INVASION',q:'敵陣に抜けたあと、最も価値を感じるのは？',h:'侵入後の目的',a:'複数人の視線を自分に向け、前線を薄くすること',b:'確実な1キルを取ってすぐ味方側へ戻ること',wa:{invasion:2,survival:1},wb:{invasion:-1,duel:1}},
+ {cat:'INVASION',q:'一番「してやった」と感じるのは？',h:'撹乱と正面戦闘',a:'敵2人を引きつけたまま生還し、味方が前を上げた',b:'正面の重要な対面を自分で勝ち切った',wa:{invasion:2,survival:1,teamwork:1},wb:{invasion:-1,duel:2}},
+
+ {cat:'TEAM',q:'味方のスペシャルがもうすぐ溜まりそう。打開では？',h:'仕掛けの同期性',a:'少し待ってタイミングを合わせる',b:'自分にチャンスが見えたら先に動く',wa:{teamwork:2},wb:{teamwork:-2,invasion:1}},
+ {cat:'TEAM',q:'味方が目の前で対面している。自分にも別の仕事がある。',h:'カバー優先度',a:'倒し切れそうならまずカバーに寄る',b:'自分の仕事を続け、味方の対面は任せる',wa:{teamwork:2},wb:{teamwork:-2,objective:1}},
+ {cat:'TEAM',q:'敵1人に対して味方2人で触れそうなときは？',h:'フォーカス意識',a:'同じ敵に火力を集中して素早く人数有利を作る',b:'別の敵や別ルートも見て同時に圧を広げる',wa:{teamwork:2,duel:1},wb:{teamwork:-1,invasion:1}},
+ {cat:'TEAM',q:'自分が仕掛けるタイミングを決める基準は？',h:'自分基準かチーム基準か',a:'味方の位置・スペシャル・復帰を見て決める',b:'自分が刺せる瞬間を最優先する',wa:{teamwork:2,adaptability:1},wb:{teamwork:-2,invasion:1}},
+
+ {cat:'OBJECTIVE',q:'ガチエリアで敵を2枚落とした。次は？',h:'キル後の優先順位',a:'まずエリアを確保し、カウントが進む状態を作る',b:'復帰ルートまで詰めて次のキルを狙う',wa:{objective:2,paint:1},wb:{objective:-1,frontline:1}},
+ {cat:'OBJECTIVE',q:'ガチヤグラ。自分が乗れば進むが、前にも出られる。',h:'オブジェクト担当への抵抗',a:'必要なら自分が乗る',b:'できるだけ前を空ける役を担当したい',wa:{objective:2,teamwork:1},wb:{objective:-1,frontline:1}},
+ {cat:'OBJECTIVE',q:'ガチホコで、持てる人が自分しかいない。',h:'役割遂行',a:'ブキに関係なく必要なら持つ',b:'自分のブキの強みを活かすため、できれば他に任せたい',wa:{objective:2,adaptability:1},wb:{objective:-2}},
+ {cat:'OBJECTIVE',q:'試合の評価として一番納得しやすいのは？',h:'勝ち筋への価値観',a:'キル数が少なくても、ルールを進めて勝てた',b:'勝っても、自分がもっと敵を倒せた試合の方が満足する',wa:{objective:2},wb:{objective:-2,duel:1}},
+
+ {cat:'PAINT',q:'敵が見えない数秒間、自然にすることは？',h:'空白時間の使い方',a:'足場・退路・味方が動く場所を塗る',b:'次の接敵場所や潜伏位置へ急いで移動する',wa:{paint:2},wb:{paint:-2,invasion:1}},
+ {cat:'PAINT',q:'開幕で価値が高いと感じるのは？',h:'初動の盤面作り',a:'味方が動きやすい塗りとスペシャル回収',b:'相手より先に重要地点へ到達すること',wa:{paint:2,teamwork:1},wb:{paint:-2,frontline:1}},
+ {cat:'PAINT',q:'自分たちが有利な盤面を取っているときは？',h:'有利維持の手段',a:'塗りを広げ直して相手の選択肢を減らす',b:'敵が出てくる場所を見てキル圧をかける',wa:{paint:2},wb:{paint:-2,duel:1}},
+ {cat:'PAINT',q:'「塗り」は自分にとって？',h:'塗りそのものの価値',a:'それ自体が勝敗を動かす主要な仕事',b:'移動・索敵・キルを成立させるための手段',wa:{paint:2,objective:1},wb:{paint:-2,duel:1}},
+
+ {cat:'SURVIVAL',q:'人数不利で囲まれそう。最初に考えるのは？',h:'デス管理',a:'生きて引き、次の4人の形を早く作る',b:'相打ちでもいいので1枚持っていく',wa:{survival:2},wb:{survival:-2,duel:1}},
+ {cat:'SURVIVAL',q:'敵陣で2人が自分を見始めた。目的はすでに達成している。',h:'侵入時の撤退判断',a:'無理に倒さず逃げて、長く注意を引き続ける',b:'見られたならどちらか1人を倒しに行く',wa:{survival:2,invasion:1},wb:{survival:-2,duel:1}},
+ {cat:'SURVIVAL',q:'残り30秒、僅差でリードしている。',h:'終盤のリスク管理',a:'自分から人数不利を作らないことを最優先する',b:'さらに攻めて決定的な有利を取りにいく',wa:{survival:2,objective:1},wb:{survival:-2,frontline:1}},
+ {cat:'SURVIVAL',q:'スペシャルがほぼ溜まっている状態で危険な対面になった。',h:'継続価値の判断',a:'一度引いてスペシャル込みの次の手を残す',b:'今の対面を勝てそうならそのまま勝負する',wa:{survival:2},wb:{survival:-2,duel:1}},
+
+ {cat:'DUEL',q:'対面で勝ったとき、より嬉しいのは？',h:'対面そのものへの価値',a:'互角に近い状況をエイムやキャラコンで勝った',b:'索敵やルート選びで最初から有利対面を作れた',wa:{duel:2},wb:{duel:-2,invasion:1}},
+ {cat:'DUEL',q:'ブキに惹かれる理由として近いのは？',h:'操作精度への魅力',a:'自分の操作精度が高いほど対面性能が伸びる',b:'塗り・牽制・機動力など複数の仕事を作れる',wa:{duel:2},wb:{duel:-2,adaptability:1}},
+ {cat:'DUEL',q:'敵が重要地点を守っている。突破するなら？',h:'直接対面か状況作りか',a:'自分で対面を仕掛けてどかしたい',b:'ボム・塗り・別角度・SPで不利な形にしてから触る',wa:{duel:2,frontline:1},wb:{duel:-2,adaptability:1}},
+ {cat:'DUEL',q:'自分が試合を壊すなら、どちらが理想？',h:'個人戦闘への依存度',a:'重要な1対1を何度も勝って人数差を作る',b:'敵の位置や判断をずらし、味方が勝ちやすい形を作る',wa:{duel:2},wb:{duel:-2,teamwork:1,invasion:1}},
+
+ {cat:'ADAPT',q:'味方3人が全員かなり前に出る編成だった。',h:'役割調整',a:'自分は普段より後ろを見て全体の形を整える',b:'自分の得意な役割は変えず、その強みを最大化する',wa:{adaptability:2,teamwork:1},wb:{adaptability:-2}},
+ {cat:'ADAPT',q:'普段の勝ち筋が全く通じない相手だった。',h:'試合中の修正',a:'途中からルートや役割を大きく変えて試す',b:'同じ勝ち筋の精度を上げて突破口を探す',wa:{adaptability:2},wb:{adaptability:-2,duel:1}},
+ {cat:'ADAPT',q:'苦手なステージでプレイするときは？',h:'未知・苦手への対応',a:'普段使わない場所や動きも積極的に試す',b:'自分が成功しやすい既知の形に持ち込む',wa:{adaptability:2,invasion:1},wb:{adaptability:-2,survival:1}},
+ {cat:'ADAPT',q:'試合中に「今、自分に求められている仕事」が変わったら？',h:'役割の可変性',a:'本来の役割と違っても必要な仕事へ切り替える',b:'自分の役割を崩さず、他の味方に任せる',wa:{adaptability:2,objective:1},wb:{adaptability:-2}}
+];
+
+const PREFS = [
+ {id:'weapon',title:'好きなブキ種',hint:'好きなものをすべて選択。★は特に好きなものを3つまで',search:false,items:['シューター','ブラスター','ローラー','チャージャー','スロッシャー','スピナー','マニューバー','フデ','シェルター','ストリンガー','ワイパー']},
+ {id:'rule',title:'好きなルール',hint:'複数選択可。★は特に好きなものを3つまで',search:false,items:['ナワバリバトル','ガチエリア','ガチヤグラ','ガチホコバトル','ガチアサリ']},
+ {id:'stage',title:'好きなステージ',hint:'全対戦ステージから好きなだけ選択。★はベスト3',search:true,items:['ユノハナ大渓谷','ゴンズイ地区','ヤガラ市場','マテガイ放水路','ナメロウ金属','マサバ海峡大橋','キンメダイ美術館','マヒマヒリゾート＆スパ','海女美術大学','チョウザメ造船','ザトウマーケット','スメーシーワールド','クサヤ温泉','ヒラメが丘団地','ナンプラー遺跡','マンタマリア号','タラポートショッピングパーク','コンブトラック','タカアシ経済特区','オヒョウ海運','バイガイ亭','カジキ空港','リュウグウターミナル','ネギトロ炭鉱','デカライン高架下']},
+ {id:'special',title:'好きなスペシャル',hint:'全スペシャルから好きなだけ選択。★はベスト3',search:true,items:['ウルトラショット','グレートバリア','ショクワンダー','マルチミサイル','アメフラシ','ナイスダマ','ホップソナー','キューインキ','メガホンレーザー5.1ch','ジェットパック','ウルトラハンコ','カニタンク','サメライド','トリプルトルネード','エナジースタンド','テイオウイカ','デコイチラシ','スミナガシート','ウルトラチャクチ']}
+];
+
+const ARCHETYPES = [
+ {name:'チーム型インベーダー',target:[78,88,82,72,55,78,58,72],desc:'敵陣や別角度へ入りながら、その動きを味方の前進につなげるタイプ。単独行動に見えても目的はチーム全体の有利作りです。',chips:['侵入×連携','撹乱','生存して継続']},
+ {name:'ソロ・インベーダー',target:[82,93,34,53,42,68,66,62],desc:'自分で隙を見つけて敵陣へ入り、相手の視線と配置を壊すタイプ。味方と離れても自力で状況を動かすことを好みます。',chips:['単独侵入','別角度','荒らし役']},
+ {name:'スカーミッシャー',target:[78,78,56,58,52,90,64,82],desc:'前線付近を高速に出入りし、倒されずに圧を継続するタイプ。無理な正面衝突より、機動力と撤退判断で相手を消耗させます。',chips:['高生存','機動戦','出入り上手']},
+ {name:'ラインブレイカー',target:[94,58,70,60,43,50,82,58],desc:'人数有利や味方の仕掛けをきっかけに前線を一気に押し上げるタイプ。相手の安全地帯を削ることに価値を感じます。',chips:['前線圧力','攻め継続','キル起点']},
+ {name:'デュエル・ハンター',target:[78,44,48,46,34,46,94,54],desc:'重要な対面を自分で勝つことを大きな勝ち筋にするタイプ。操作精度と対面判断を武器に人数有利を生み出します。',chips:['対面志向','1v1','個人突破']},
+ {name:'盤面コントローラー',target:[48,30,76,88,94,78,36,70],desc:'塗りとルール関与で相手の選択肢を減らし、試合全体を整えるタイプ。派手なキルより盤面の再現性を重視します。',chips:['塗り重視','ルール関与','盤面設計']},
+ {name:'チーム・オーケストレーター',target:[50,30,95,92,72,80,40,80],desc:'味方の位置・スペシャル・ルール進行を見ながら全体を噛み合わせるタイプ。自分の仕事を状況に応じて変えられます。',chips:['連携最優先','カバー','全体最適']},
+ {name:'ポジション・アンカー',target:[25,16,78,68,58,94,72,54],desc:'敵陣への深い侵入より、崩れにくい距離と生存を使ってチームの基点を作るタイプ。前線が戻れる場所を残す役割に向きます。',chips:['低侵入','高生存','基点維持']},
+ {name:'ルール・ランナー',target:[74,62,78,96,60,66,54,72],desc:'ルールを進めるためなら前にも出て、必要な役割も引き受けるタイプ。個人成績よりカウントを動かすことを優先します。',chips:['ルール最優先','役割遂行','前進']},
+ {name:'ペイント・サポート',target:[42,24,86,76,96,84,34,68],desc:'塗りと味方支援を積み重ね、チームが動きやすい盤面を作るタイプ。自分が直接倒す以外の価値を高く評価します。',chips:['塗り支援','味方補助','安定']},
+ {name:'アダプティブ・フレックス',target:[58,55,72,72,65,70,58,96],desc:'編成・ステージ・試合展開によって役割を切り替えるタイプ。固定された勝ち方より、その瞬間に必要な仕事を選びます。',chips:['適応力','役割変更','柔軟']},
+ {name:'バランス・プレイヤー',target:[56,52,62,64,58,64,58,66],desc:'一つの価値観に極端に寄らず、前線・塗り・連携・生存を状況に応じて使い分けるタイプです。',chips:['万能型','状況判断','バランス']}
+];
+
+let state = {name:'PLAYER',i:0,answers:[],prefs:{},favs:{}};
+const $ = id => document.getElementById(id);
+
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function start(){state={name:$('nickname').value.trim()||'PLAYER',i:0,answers:[],prefs:{},favs:{}};renderQ();show('quiz');}
+function renderQ(){const q=Q[state.i];$('questionNumber').textContent=`Q${String(state.i+1).padStart(2,'0')}`;$('questionText').textContent=q.q;$('questionHint').textContent=q.h;$('choiceA').textContent=q.a;$('choiceB').textContent=q.b;$('progressLabel').textContent=`${state.i+1} / ${Q.length}`;$('categoryLabel').textContent=q.cat;$('progressBar').style.width=`${((state.i+1)/Q.length)*100}%`;}
+function answer(which){state.answers[state.i]=which;if(state.i<Q.length-1){state.i++;renderQ()}else{renderPrefs();show('prefs')}}
+function backQ(){if(state.i===0){show('home');return}state.i--;renderQ()}
+
+function renderPrefs(){
+ const host=$('prefGroups');host.innerHTML='';
+ PREFS.forEach(g=>{
+   const wrap=document.createElement('article');wrap.className='pref-group glass'+(g.search?' expanded':'');
+   wrap.innerHTML=`<div class="pref-head"><div><h3>${g.title}</h3><p>${g.hint}</p></div><span id="count-${g.id}" class="pref-count"></span></div>${g.search?`<div class="pref-tools"><input class="pref-search" type="search" placeholder="${g.title.replace('好きな','')}を検索" aria-label="${g.title}を検索"><span class="pref-legend">タップで選択 / ★でベスト3</span></div>`:''}<div class="pill-grid"></div><p class="pref-note">未選択でも診断結果には影響しません。好みのプロフィール情報として保存されます。</p>`;
+   const grid=wrap.querySelector('.pill-grid');
+   g.items.forEach(item=>grid.appendChild(makePrefChoice(g,item)));
+   if(g.search){wrap.querySelector('.pref-search').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();[...grid.children].forEach(el=>{el.style.display=el.dataset.item.toLowerCase().includes(q)?'inline-flex':'none'})})}
+   host.appendChild(wrap);updatePrefCount(g.id);
+ });
+}
+function makePrefChoice(g,item){
+ const shell=document.createElement('span');shell.className='choice-pill';shell.dataset.item=item;
+ const main=document.createElement('button');main.type='button';main.className='choice-main';main.textContent=item;main.onclick=()=>togglePref(g.id,item,shell);
+ const star=document.createElement('button');star.type='button';star.className='star-btn';star.textContent='★';star.title='特に好き（最大3つ）';star.setAttribute('aria-label',`${item}をお気に入りにする`);star.onclick=()=>toggleFavorite(g.id,item,shell);
+ shell.append(main,star);return shell;
+}
+function togglePref(id,item,shell){
+ let arr=state.prefs[id]||[];
+ if(arr.includes(item)){
+   arr=arr.filter(x=>x!==item);state.favs[id]=(state.favs[id]||[]).filter(x=>x!==item);shell.classList.remove('selected','favorite');
+ }else{arr.push(item);shell.classList.add('selected')}
+ state.prefs[id]=arr;updatePrefCount(id);
+}
+function toggleFavorite(id,item,shell){
+ let arr=state.prefs[id]||[], fav=state.favs[id]||[];
+ if(fav.includes(item)){fav=fav.filter(x=>x!==item);shell.classList.remove('favorite')}
+ else{
+   if(!arr.includes(item)){arr.push(item);shell.classList.add('selected')}
+   if(fav.length>=3){toast('★お気に入りは各カテゴリ3つまでです');return}
+   fav.push(item);shell.classList.add('favorite')
+ }
+ state.prefs[id]=arr;state.favs[id]=fav;updatePrefCount(id);
+}
+function updatePrefCount(id){const el=$(`count-${id}`);if(el)el.textContent=`選択 ${(state.prefs[id]||[]).length}  /  ★ ${(state.favs[id]||[]).length}/3`}
+
+
+function calcScores(){
+ const raw={},limits={};AXES.forEach(([k])=>{raw[k]=0;limits[k]=0});
+ Q.forEach((q,idx)=>{const ans=state.answers[idx]||'a',w=ans==='a'?q.wa:q.wb;Object.entries(w).forEach(([k,v])=>raw[k]+=v);AXES.forEach(([k])=>{limits[k]+=Math.max(Math.abs(q.wa[k]||0),Math.abs(q.wb[k]||0))})});
+ const scores={};AXES.forEach(([k])=>{const m=limits[k]||1;scores[k]=Math.round(50+(raw[k]/m)*45);scores[k]=Math.max(5,Math.min(95,scores[k]))});return scores
+}
+
+function rankedTypes(s){
+ const values=AXES.map(([k])=>s[k]);
+ return ARCHETYPES.map(a=>{const d=Math.sqrt(a.target.reduce((sum,t,i)=>sum+(values[i]-t)**2,0));const fit=Math.round(Math.max(0,100-d/2.25));return {...a,d,fit}}).sort((a,b)=>a.d-b.d)
+}
+function typeFor(s){return rankedTypes(s)[0]}
+function insightsFor(s){
+ const sorted=AXES.map(([k,l])=>({k,l,v:s[k]})).sort((a,b)=>b.v-a.v), top=sorted.slice(0,2),low=sorted.at(-1),types=rankedTypes(s);
+ return [
+  {t:`強み：${top[0].l}`,p:`${top[0].v}/100。今回の回答で最も強く出た価値観です。高いから上手いという意味ではなく、判断時に優先しやすい傾向を示します。`},
+  {t:`次の特徴：${top[1].l}`,p:`${top[1].v}/100。主軸と組み合わさってプレイスタイルを作る第二の特徴です。`},
+  {t:`次に近いタイプ`,p:`${types[1].name}（適合度 ${types[1].fit}%）。タイプ名は単一条件ではなく、8軸全体と12種類の基準プロファイルとの距離で判定しています。`}
+ ]
+}
+function encodeResult(scores){const compact={v:4,n:state.name,s:AXES.map(([k])=>scores[k]),p:state.prefs,f:state.favs};return btoa(unescape(encodeURIComponent(JSON.stringify(compact)))).replace(/=+$/,'')}
+function decodeResult(code){try{let c=code.trim();while(c.length%4)c+='=';return JSON.parse(decodeURIComponent(escape(atob(c))))}catch(e){return null}}
+
+function showResult(){const s=calcScores(),type=typeFor(s);$('resultName').textContent=`${state.name} のプレイスタイル`;$('typeName').textContent=type.name;$('typeDesc').textContent=type.desc;$('typeChips').innerHTML=[`タイプ適合度 ${type.fit}%`,...type.chips].map(x=>`<span>${x}</span>`).join('');
+ $('statsList').innerHTML=AXES.map(([k,l])=>`<div class="stat-row"><div class="stat-label">${l}</div><div class="stat-bar"><i style="width:${s[k]}%"></i></div><div class="stat-score">${s[k]}</div></div>`).join('');
+ $('insights').innerHTML=insightsFor(s).map(x=>`<div class="insight"><b>${x.t}</b><p>${x.p}</p></div>`).join('');
+ $('prefResult').innerHTML=PREFS.map(g=>{const vals=state.prefs[g.id]||[],fav=state.favs[g.id]||[];const ordered=[...fav,...vals.filter(x=>!fav.includes(x))];return `<div><span>${g.title}</span><div class="pref-values">${ordered.length?ordered.map(x=>`<em class="pref-tag ${fav.includes(x)?'favorite':''}">${fav.includes(x)?'★ ':''}${x}</em>`).join(''):'<b>未選択</b>'}</div></div>`}).join('');
+ $('shareCode').value=encodeResult(s);$('compareResult').classList.add('hidden');updateSharePreview(s,type);drawRadar(s);show('result')}
+
+function drawRadar(s){const c=$('radar'),ctx=c.getContext('2d'),w=c.width,h=c.height,cx=w/2,cy=h/2+8,R=Math.min(w,h)*.36,n=AXES.length;ctx.clearRect(0,0,w,h);ctx.save();ctx.translate(.5,.5);
+ for(let level=1;level<=5;level++){ctx.beginPath();for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n,r=R*level/5,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.strokeStyle='rgba(255,255,255,.10)';ctx.stroke()}
+ AXES.forEach(([,l],i)=>{const a=-Math.PI/2+i*2*Math.PI/n,x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.strokeStyle='rgba(255,255,255,.08)';ctx.stroke();const tx=cx+Math.cos(a)*(R+42),ty=cy+Math.sin(a)*(R+28);ctx.fillStyle='#cfd3dd';ctx.font='700 15px sans-serif';ctx.textAlign=Math.cos(a)>.2?'left':Math.cos(a)<-.2?'right':'center';ctx.textBaseline='middle';ctx.fillText(l,tx,ty)});
+ ctx.beginPath();AXES.forEach(([k],i)=>{const a=-Math.PI/2+i*2*Math.PI/n,r=R*s[k]/100,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.fillStyle='rgba(201,255,36,.16)';ctx.fill();ctx.strokeStyle='#c9ff24';ctx.lineWidth=4;ctx.stroke();AXES.forEach(([k],i)=>{const a=-Math.PI/2+i*2*Math.PI/n,r=R*s[k]/100,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill()});ctx.restore()}
+
+function basePageUrl(){return location.href.split('#')[0].split('?')[0]}
+function shareText(scores,type){
+ const top=AXES.map(([k,l])=>({l,v:scores[k]})).sort((a,b)=>b.v-a.v).slice(0,3);
+ return `🦑 私のINKTYPEは「${type.name}」でした！\n\n${top.map(x=>`${x.l} ${x.v}`).join(' / ')}\n\nあなたはどのタイプ？\n#INKTYPE #スプラ診断`;
+}
+function updateSharePreview(scores,type){
+ const text=shareText(scores,type);$('sharePreview').textContent=text;$('shareStatus').textContent=`共有先: ${basePageUrl()}`;
+}
+function currentSharePayload(){const s=calcScores(),t=typeFor(s);return {text:shareText(s,t),url:basePageUrl(),title:'INKTYPE — スプラ・プレイスタイル診断'}}
+function shareOnX(){const p=currentSharePayload();const u='https://twitter.com/intent/tweet?'+new URLSearchParams({text:p.text,url:p.url}).toString();window.open(u,'_blank','noopener,noreferrer')}
+async function nativeShare(){const p=currentSharePayload();if(navigator.share){try{await navigator.share(p)}catch(e){if(e&&e.name!=='AbortError')toast('共有できませんでした')}}else{await copyText(`${p.text}\n${p.url}`);toast('共有文をコピーしました')}}
+async function copyText(text){try{await navigator.clipboard.writeText(text);return true}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok}}
+function compare(){const other=decodeResult($('friendCode').value);if(!other||![2,3,4].includes(other.v)||!Array.isArray(other.s)||other.s.length!==8){toast(other&&other.v===1?'旧版v1コードは比較できません':'コードを読み取れませんでした');return}const mine=calcScores();const diffs=AXES.map(([k],i)=>Math.abs(mine[k]-other.s[i]));const mean=diffs.reduce((a,b)=>a+b,0)/diffs.length;const sim=Math.round(Math.max(0,100-mean*1.35));
+ // 補完度: 同一性ではなく、前線/侵入と生存/連携が相互に補えるかを軽く評価する試作値
+ const pairs=[[0,5],[1,2],[6,4],[3,7]];const compRaw=pairs.map(([a,b])=>100-Math.abs((AXES.map(([k])=>mine[k])[a]+other.s[b])-125));const complement=Math.round(Math.max(0,Math.min(100,compRaw.reduce((a,b)=>a+b,0)/compRaw.length)));
+ const box=$('compareResult');box.innerHTML=`<div class="compare-score"><strong>${sim}%</strong><span>価値観一致度 ／ ${other.n||'FRIEND'}</span></div><p style="color:#a8adbc;font-size:12px;line-height:1.7">8軸の距離から算出した試作スコアです。役割の補完度は <b style="color:#fff">${complement}%</b>。</p><div class="compare-bars">${AXES.map(([k,l],i)=>`<div class="compare-mini"><span>${l}</span><i style="--w:${100-Math.abs(mine[k]-other.s[i])}%"></i><b>${100-Math.abs(mine[k]-other.s[i])}</b></div>`).join('')}</div>`;box.classList.remove('hidden');box.scrollIntoView({behavior:'smooth',block:'center'})}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1900)}
+
+$('startBtn').onclick=start;$('choiceA').onclick=()=>answer('a');$('choiceB').onclick=()=>answer('b');$('quizBack').onclick=backQ;$('showResultBtn').onclick=showResult;$('retryBtn').onclick=()=>{show('home');$('nickname').focus()};$('brandBtn').onclick=()=>show('home');$('copyCodeBtn').onclick=async()=>{await copyText($('shareCode').value);toast('結果コードをコピーしました')};$('compareBtn').onclick=compare;$('scrollCompareBtn').onclick=()=>document.querySelector('.compare-card').scrollIntoView({behavior:'smooth'});$('compareFromHomeBtn').onclick=()=>{const code=prompt('友だちの結果コードを貼り付けてください');if(!code)return;const other=decodeResult(code);if(!other){toast('コードを読み取れませんでした');return}if(![2,3,4].includes(other.v)){toast('このコード形式には対応していません');return}alert(`${other.n||'FRIEND'}さんの結果コードです。まず自分の診断をすると比較できます。`);$('nickname').focus()};$('nickname').addEventListener('keydown',e=>{if(e.key==='Enter')start()});$('shareXBtn').onclick=shareOnX;$('nativeShareBtn').onclick=nativeShare;$('copyShareTextBtn').onclick=async()=>{const p=currentSharePayload();await copyText(`${p.text}\n${p.url}`);toast('共有文をコピーしました')};$('feedbackBtn').onclick=()=>{$('feedbackModal').classList.add('open');$('feedbackText').focus()};$('closeFeedbackBtn').onclick=()=>$('feedbackModal').classList.remove('open');$('copyFeedbackBtn').onclick=async()=>{const v=$('feedbackText').value.trim();if(!v){toast('フィードバック内容を入力してください');return}await copyText(`INKTYPE Public Beta v4 フィードバック\n\n${v}`);toast('フィードバックをコピーしました')};$('feedbackModal').onclick=e=>{if(e.target===$('feedbackModal'))$('feedbackModal').classList.remove('open')};$('privacyBtn').onclick=()=>alert('このv4では、回答・ニックネーム・診断結果をサーバーへ送信しません。診断計算はブラウザ内だけで完結します。X共有を押した場合は、Xの投稿画面へ共有文とサイトURLを渡します。');$('aboutBtn').onclick=()=>alert('INKTYPEは、スプラのプレイ価値観を8軸で可視化する非公式ファンメイド診断です。結果は娯楽目的の参考値であり、実力や適性を断定するものではありません。');document.addEventListener('keydown',e=>{if(e.key==='Escape')$('feedbackModal').classList.remove('open')});
+
+</script>
+</body>
+</html>
